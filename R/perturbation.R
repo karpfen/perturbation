@@ -1,4 +1,4 @@
-#' Circle line perturbation mask
+#' Circle line perturbation
 #'
 #' Adds perturbation constrained on a line with fixed length around a point.
 #'
@@ -17,7 +17,7 @@ circle <- function (p, r)
   c (x_out, y_out)
 }
 
-#' Donut perturbation mask
+#' Donut perturbation
 #'
 #' Adds perturbation constrained on a ring (donut) around a point.
 #'

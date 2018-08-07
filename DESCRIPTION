@@ -7,7 +7,7 @@ Maintainer: Andreas Petutschnig <andreas@petutschnig.de>
 Description: Adds either line-circular, donut,
     circular uniformly distributed or circular gauss distributed
     perturbation to point data.
-License: GPLv3
+License: GPL-3
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.0.1

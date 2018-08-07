@@ -2,7 +2,7 @@
 % Please edit documentation in R/perturbation.R
 \name{circle}
 \alias{circle}
-\title{Circle line perturbation mask}
+\title{Circle line perturbation}
 \usage{
 circle(p, r)
 }

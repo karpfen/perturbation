@@ -3,14 +3,25 @@
 #' Generate boxplots showing the data's distance to (0/0).
 #'
 #' @param dat \code{data.frame} containing all data.
+#' @param xlabels Optional \code{vector} of x labels for the plot.
 #'
 #' @export
-distance_to_zero <- function (dat)
+distance_to_zero <- function (dat, xlabels)
 {
-  d_zero [1, ] <- sqrt ((d_original [, 1]) ^ 2 + (d_original [, 2]) ^ 2)
-  d_zero [2, ] <- sqrt ((d_circle [, 1]) ^ 2 + (d_circle [, 2]) ^ 2)
-  d_zero [3, ] <- sqrt ((d_donut [, 1]) ^ 2 + (d_donut [, 2]) ^ 2)
-  d_zero [4, ] <- sqrt ((d_uni [, 1]) ^ 2 + (d_uni [, 2]) ^ 2)
-  d_zero [5, ] <- sqrt ((d_gauss [, 1]) ^ 2 + (d_gauss [, 2]) ^ 2)
-  boxplot (d_zero, main = "Point distance to (0/0)", ylab = "Distance")
+  nrow <- dim (dat [[1]]) [1]
+  ncol <- length (dat)
+  d_zero <- as.data.frame (matrix (0, nrow = nrow, ncol = ncol))
+
+  for (i in seq_len (ncol))
+  {
+    d_original <- dat [[i]]
+    d_zero [, i] <- sqrt ((d_original [, 1]) ^ 2 + (d_original [, 2]) ^ 2)
+  }
+  if (missing(xlabels))
+  {
+    boxplot (d_zero, main = "Point distance to (0/0)", ylab = "Distance")
+  } else
+  {
+    boxplot (d_zero, main = "Point distance to (0/0)", ylab = "Distance", xlab = xlabels)
+  }
 }

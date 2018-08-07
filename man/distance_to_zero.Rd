@@ -4,10 +4,12 @@
 \alias{distance_to_zero}
 \title{Distance to zero}
 \usage{
-distance_to_zero(dat)
+distance_to_zero(dat, xlabels)
 }
 \arguments{
 \item{dat}{\code{data.frame} containing all data.}
+
+\item{xlabels}{Optional \code{vector} of x labels for the plot.}
 }
 \description{
 Generate boxplots showing the data's distance to (0/0).

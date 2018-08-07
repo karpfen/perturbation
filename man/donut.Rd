@@ -2,7 +2,7 @@
 % Please edit documentation in R/perturbation.R
 \name{donut}
 \alias{donut}
-\title{Donut perturbation mask}
+\title{Donut perturbation}
 \usage{
 donut(p, r1, r2)
 }
