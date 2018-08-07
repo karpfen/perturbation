@@ -11,7 +11,7 @@ comparison_plots(dat_orig, dat_dist, labels)
 
 \item{dat_dist}{\code{list} containing all data.}
 
-\item{labels}{Optional \code{vector} of labels for the plots.}
+\item{labels}{\code{vector} of perturbation values as labels for the plots.}
 }
 \description{
 Generate plot overlaying the original and distorted data.

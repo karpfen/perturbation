@@ -9,7 +9,7 @@ distance_to_zero(dat, xlabels)
 \arguments{
 \item{dat}{\code{list} containing all data.}
 
-\item{xlabels}{Optional \code{vector} of x labels for the plot.}
+\item{xlabels}{\code{vector} of perturbation values as labels for the plot.}
 }
 \description{
 Generate boxplots showing the data's distance to (0/0).

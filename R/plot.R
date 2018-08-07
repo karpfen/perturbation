@@ -3,11 +3,12 @@
 #' Generate boxplots showing the data's distance to (0/0).
 #'
 #' @param dat \code{list} containing all data.
-#' @param xlabels Optional \code{vector} of x labels for the plot.
+#' @param xlabels \code{vector} of perturbation values as labels for the plot.
 #'
 #' @export
 distance_to_zero <- function (dat, xlabels)
 {
+  xlabels <- as.character (round (xlabels, 2))
   nrow <- dim (dat [[1]]) [1]
   ncol <- length (dat)
   d_zero <- as.data.frame (matrix (0, nrow = nrow, ncol = ncol))
@@ -18,9 +19,13 @@ distance_to_zero <- function (dat, xlabels)
     d_zero [, i] <- sqrt ((d_original [, 1]) ^ 2 + (d_original [, 2]) ^ 2)
   }
 
+  names (d_zero) <- xlabels
   dat_plot <- stack(d_zero)
   ggplot2::ggplot(dat_plot) +
-    ggplot2::geom_boxplot(ggplot2::aes(x = ind, y = values))
+    ggplot2::geom_boxplot(ggplot2::aes(x = ind, y = values)) +
+    ggplot2::ggtitle ("Point distance from (0/0)") +
+    ggplot2::xlab ("Perturbation") +
+    ggplot2::ylab ("Distance")
 }
 
 #' Comparison plots
@@ -29,11 +34,12 @@ distance_to_zero <- function (dat, xlabels)
 #'
 #' @param dat_orig \code{data.frame} of original point data.
 #' @param dat_dist \code{list} containing all data.
-#' @param labels Optional \code{vector} of labels for the plots.
+#' @param labels \code{vector} of perturbation values as labels for the plots.
 #'
 #' @export
 comparison_plots <- function (dat_orig, dat_dist, labels)
 {
+  labels <- as.character (round (labels, 2))
   dat_orig$type <- "Original"
   n_dist <- length (dat_dist)
   if (!missing(labels) && length(labels) != n_dist)
@@ -59,13 +65,17 @@ comparison_plots <- function (dat_orig, dat_dist, labels)
     dat$type <- "Distorted"
 
     dat_plot <- rbind (dat_orig, dat)
+    title <- paste0 ("Original - distorted points (Perturbation: ", labels [i], ")")
 
     plots_out [[i]] <- ggplot2::ggplot (dat_plot,
                                         ggplot2::aes (x = x, y = y,
                                                       color = type)) +
       ggplot2::geom_point() +
       ggplot2::scale_x_continuous(limits = xl) +
-      ggplot2::scale_y_continuous(limits = yl)
+      ggplot2::scale_y_continuous(limits = yl) +
+      ggplot2::ggtitle (title) +
+      ggplot2::xlab ("X") +
+      ggplot2::ylab ("Y")
   }
   plots_out
 }
