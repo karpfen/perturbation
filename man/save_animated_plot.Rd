@@ -4,14 +4,16 @@
 \alias{save_animated_plot}
 \title{Plot animation wrapper}
 \usage{
-save_animated_plot(plots, fps, file_out)
+save_animated_plot(plots, file_out, fps = 10, res = 96)
 }
 \arguments{
 \item{plots}{\code{list} of ggplot objects.}
 
+\item{file_out}{output file location.}
+
 \item{fps}{frames per second.}
 
-\item{file_out}{output file location.}
+\item{res}{resolution in pixels.}
 }
 \description{
 Generate an animated gif from a list of ggplot objects.
