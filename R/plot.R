@@ -20,7 +20,7 @@ distance_to_zero <- function (dat, xlabels)
 
   dat_plot <- stack(d_zero)
   ggplot2::ggplot(dat_plot) +
-    ggplot2::geom_boxplot(ggplot2::aes(x = dat_plot$ind, y = dat_plot$values))
+    ggplot2::geom_boxplot(ggplot2::aes(x = ind, y = values))
 }
 
 #' Comparison plots
@@ -61,9 +61,8 @@ comparison_plots <- function (dat_orig, dat_dist, labels)
     dat_plot <- rbind (dat_orig, dat)
 
     plots_out [[i]] <- ggplot2::ggplot (dat_plot,
-                                        ggplot2::aes (x = dat_plot$x,
-                                                      y = dat_plot$y,
-                                                      color = dat_plot$type)) +
+                                        ggplot2::aes (x = x, y = y,
+                                                      color = type)) +
       ggplot2::geom_point() +
       ggplot2::scale_x_continuous(limits = xl) +
       ggplot2::scale_y_continuous(limits = yl)
