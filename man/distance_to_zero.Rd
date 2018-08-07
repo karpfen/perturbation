@@ -7,7 +7,7 @@
 distance_to_zero(dat, xlabels)
 }
 \arguments{
-\item{dat}{\code{data.frame} containing all data.}
+\item{dat}{\code{list} containing all data.}
 
 \item{xlabels}{Optional \code{vector} of x labels for the plot.}
 }

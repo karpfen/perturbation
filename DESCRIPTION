@@ -7,6 +7,7 @@ Maintainer: Andreas Petutschnig <andreas@petutschnig.de>
 Description: Adds either line-circular, donut,
     circular uniformly distributed or circular gauss distributed
     perturbation to point data.
+Imports: ggplot2
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
