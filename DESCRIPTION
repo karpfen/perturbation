@@ -10,3 +10,4 @@ Description: Adds either line-circular, donut,
 License: GPLv3
 Encoding: UTF-8
 LazyData: true
+RoxygenNote: 6.0.1
