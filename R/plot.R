@@ -26,7 +26,7 @@ distance_to_zero <- function (dat, xlabels)
     ggplot2::ggtitle ("Point distance from (0/0)") +
     ggplot2::xlab ("Perturbation") +
     ggplot2::ylab ("Distance") +
-    ggplot2::theme_linedraw (base_family = "TeX Gyre Bonum")
+    ggplot2::theme_linedraw ()
 }
 
 #' Comparison plots
@@ -77,7 +77,7 @@ comparison_plots <- function (dat_orig, dat_dist, labels)
       ggplot2::ggtitle (title) +
       ggplot2::xlab ("X") +
       ggplot2::ylab ("Y") +
-      ggplot2::theme_linedraw (base_family = "TeX Gyre Bonum")
+      ggplot2::theme_linedraw ()
   }
   plots_out
 }
@@ -101,5 +101,5 @@ plot_descriptive_stats <- function (stats)
     ggplot2::ggtitle ("Effects of perturbation on the descriptive statistics") +
     ggplot2::xlab ("Perturbation") +
     ggplot2::ylab ("Value") +
-    ggplot2::theme_linedraw (base_family = "TeX Gyre Bonum")
+    ggplot2::theme_linedraw ()
 }
