@@ -6,6 +6,7 @@
 #' @importFrom graphics boxplot
 #' @importFrom grDevices dev.off
 #' @importFrom magick image_animate image_graph image_write
-#' @importFrom stats rnorm runif
+#' @importFrom reshape2 melt
+#' @importFrom stats rnorm runif median sd
 #' @importFrom utils stack
 NULL

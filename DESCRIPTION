@@ -9,7 +9,8 @@ Description: Adds either line-circular, donut,
     perturbation to point data.
 Imports:
     ggplot2,
-    magick
+    magick,
+    reshape2
 License: GPL-3
 Encoding: UTF-8
 LazyData: true

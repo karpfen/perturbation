@@ -79,3 +79,24 @@ comparison_plots <- function (dat_orig, dat_dist, labels)
   }
   plots_out
 }
+
+#' Plot descriptive statistics
+#'
+#' Plot the statistics calculated by descriptive_stats.
+#'
+#' @param stats input data.
+#'
+#' @return A \code{ggplot2} object of the plot.
+#'
+#' @export
+plot_descriptive_stats <- function (stats)
+{
+  stats_melt <- reshape2::melt (stats, id.vars = "Perturbation")
+  names (stats_melt) [which (names(stats_melt) == "variable")] <- "Statistic"
+
+  ggplot2::ggplot(stats_melt, ggplot2::aes(x = Perturbation, y = value, color = Statistic)) +
+    ggplot2::geom_line() +
+    ggplot2::ggtitle ("Effects of perturbation on the descriptive statistics") +
+    ggplot2::xlab ("Perturbation") +
+    ggplot2::ylab ("Value")
+}
