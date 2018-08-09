@@ -22,11 +22,11 @@ distance_to_zero <- function (dat, xlabels)
   names (d_zero) <- xlabels
   dat_plot <- stack(d_zero)
   ggplot2::ggplot(dat_plot) +
-    ggplot2::geom_boxplot(ggplot2::aes(x = ind, y = values)) +
+    ggplot2::geom_boxplot(ggplot2::aes_ (x = ~ind, y = ~values)) +
     ggplot2::ggtitle ("Point distance from (0/0)") +
     ggplot2::xlab ("Perturbation") +
     ggplot2::ylab ("Distance") +
-    ggplot2::theme_linedraw ()
+    ggplot2::theme_bw (base_family = "Latin Modern Math")
 }
 
 #' Comparison plots
@@ -66,18 +66,19 @@ comparison_plots <- function (dat_orig, dat_dist, labels)
     dat$type <- "Distorted"
 
     dat_plot <- rbind (dat_orig, dat)
-    title <- paste0 ("Original - distorted points (Perturbation: ", labels [i], ")")
+    title <- paste0 ("Original - distorted points (Perturbation: ",
+                     labels [i], ")")
 
     plots_out [[i]] <- ggplot2::ggplot (dat_plot,
-                                        ggplot2::aes (x = x, y = y,
-                                                      color = type)) +
+                                        ggplot2::aes_ (x = ~x, y = ~y,
+                                                      color = ~type)) +
       ggplot2::geom_point() +
       ggplot2::scale_x_continuous(limits = xl) +
       ggplot2::scale_y_continuous(limits = yl) +
       ggplot2::ggtitle (title) +
       ggplot2::xlab ("X") +
       ggplot2::ylab ("Y") +
-      ggplot2::theme_linedraw ()
+      ggplot2::theme_bw (base_family = "Latin Modern Math")
   }
   plots_out
 }
@@ -86,20 +87,39 @@ comparison_plots <- function (dat_orig, dat_dist, labels)
 #'
 #' Plot the statistics calculated by descriptive_stats.
 #'
-#' @param stats input data.
+#' @param stats Input data.
+#' @param legend Optional custom legend title instead of a generic one.
+#' @param title Optional custom title instead of a generic one.
+#' @param xlabel Optional custom x label instead of a generic one.
+#' @param ylabel Optional custom y label instead of a generic one.
 #'
 #' @return A \code{ggplot2} object of the plot.
 #'
 #' @export
-plot_descriptive_stats <- function (stats)
+plot_descriptive_stats <- function (stats, legend, title, xlabel, ylabel)
 {
-  stats_melt <- reshape2::melt (stats, id.vars = "Perturbation")
-  names (stats_melt) [which (names(stats_melt) == "variable")] <- "Statistic"
+  plot_title <- "Effects of perturbation on the descriptive statistics"
+  legend_title <- "Statistic"
+  xl <- "Perturbation"
+  yl <- "Value"
 
-  ggplot2::ggplot(stats_melt, ggplot2::aes(x = Perturbation, y = value, color = Statistic)) +
+  if (!missing(xlabel))
+    xl <- xlabel
+  if (!missing(ylabel))
+    yl <- ylabel
+  if (!missing(legend))
+    legend_title <- legend
+  if (!missing(title))
+    plot_title <- title
+
+  stats_melt <- reshape2::melt (stats, id.vars = "Perturbation")
+  names (stats_melt) [which (names(stats_melt) == "variable")] <- legend_title
+
+  ggplot2::ggplot(stats_melt, ggplot2::aes_(x = ~Perturbation, y = ~value,
+                                            color = ~Statistic)) +
     ggplot2::geom_line() +
-    ggplot2::ggtitle ("Effects of perturbation on the descriptive statistics") +
-    ggplot2::xlab ("Perturbation") +
-    ggplot2::ylab ("Value") +
-    ggplot2::theme_linedraw ()
+    ggplot2::ggtitle (plot_title) +
+    ggplot2::xlab (xl) +
+    ggplot2::ylab (yl) +
+    ggplot2::theme_bw (base_family = "Latin Modern Math")
 }

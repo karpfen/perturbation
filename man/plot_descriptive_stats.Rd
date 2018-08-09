@@ -4,10 +4,18 @@
 \alias{plot_descriptive_stats}
 \title{Plot descriptive statistics}
 \usage{
-plot_descriptive_stats(stats)
+plot_descriptive_stats(stats, legend, title, xlabel, ylabel)
 }
 \arguments{
-\item{stats}{input data.}
+\item{stats}{Input data.}
+
+\item{legend}{Optional custom legend title instead of a generic one.}
+
+\item{title}{Optional custom title instead of a generic one.}
+
+\item{xlabel}{Optional custom x label instead of a generic one.}
+
+\item{ylabel}{Optional custom y label instead of a generic one.}
 }
 \value{
 A \code{ggplot2} object of the plot.
